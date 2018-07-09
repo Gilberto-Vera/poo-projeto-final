@@ -6,21 +6,17 @@
 package br.edu.ifg.siseducar.frame;
 
 import br.edu.ifg.siseducar.util.FormulariosContext;
-import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 
 /**
- *
  * @author danilo
  */
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
     public Principal() {
         initComponents();
+        new SplashScreen().setVisible(true);
     }
 
     /**
@@ -79,11 +75,6 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(configuracoesMenu);
 
         cadastroMenu.setText("Cadastro");
-        cadastroMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroMenuActionPerformed(evt);
-            }
-        });
 
         cadastroCategoriaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         cadastroCategoriaItem.setText("Fluxo de Caixa");
@@ -136,10 +127,6 @@ public class Principal extends javax.swing.JFrame {
     private void menuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_menuItemSairActionPerformed
-
-    private void cadastroMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroMenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cadastroMenuActionPerformed
 
     private void cadastroDisciplinaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroDisciplinaMenuItemActionPerformed
         FormulariosContext.showCadastroCategoria();

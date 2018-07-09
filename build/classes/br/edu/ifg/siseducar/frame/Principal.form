@@ -29,9 +29,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroMenuActionPerformed"/>
-          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="cadastroCategoriaItem">
               <Properties>

@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Banco {
 
-    //Professores >>
     private static List<Professor> professores = new ArrayList<>();
     
     static {
@@ -22,7 +21,6 @@ public class Banco {
         professores.add(professor);
     }
 
-    //Alunos >>
     private static List<Aluno> alunos = new ArrayList<>();
     
     public static List<Aluno> getAlunos() {

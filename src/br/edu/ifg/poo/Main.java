@@ -5,6 +5,7 @@
  */
 package br.edu.ifg.poo;
 
+import br.edu.ifg.siseducar.frame.LoginFrm;
 import br.edu.ifg.siseducar.frame.SplashScreen;
 
 
@@ -24,7 +25,8 @@ public class Main {
 //            }
 //        }).start();
 
-            new SplashScreen().setVisible(true);
+            //new SplashScreen().setVisible(true);
+            new LoginFrm().setVisible(true);
         
 
     }
