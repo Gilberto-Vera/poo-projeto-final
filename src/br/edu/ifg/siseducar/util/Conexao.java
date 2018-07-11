@@ -3,25 +3,29 @@ package br.edu.ifg.siseducar.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Statement;
 
 public class Conexao {
-
-    private static Connection conexao;
-    private static final String URL = "jdbc:postgresql://localhost/ProjetoFinal";
-    private static final String USUARIO = "postgres";
-    private static final String SENHA = "14212028";
-    
-    
     public static Connection getConexao(){
+        String DRIVER = "org.postgresql.Driver";
+        String URL = "jdbc:postgresql://localhost/ProjetoFinal";
+        String USUARIO = "postgres";
+        String SENHA = "14212028";
         try {
-            if(conexao == null || conexao.isClosed()){
-                conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+            Class.forName(DRIVER);
+            Connection con;
+            con = (Connection) DriverManager.getConnection(URL, USUARIO, SENHA);
+            return con;
+        } catch (ClassNotFoundException ex){
+            System.err.print(ex.getMessage());
+            return null;
+        } catch (SQLException e){
+            System.err.print(e.getMessage());
+            return null;
         }
-        return conexao;
+    }
+
+    static Statement createStatement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 /**
  *
@@ -30,9 +29,9 @@ public class SplashScreen extends javax.swing.JFrame {
                 EventQueue.invokeLater(new Runnable() {
                     public void run() {
                         try {
-                            UIManager.setLookAndFeel(new NimbusLookAndFeel());
+                            //UIManager.setLookAndFeel(new NimbusLookAndFeel());
 //                            UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceMistSilverLookAndFeel");
-//                UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+                UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
 //                UIManager.setLookAndFeel("com.jtattoo.plaf.aero.AeroLookAndFeel");
 //                UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
 //                UIManager.setLookAndFeel("com.jtattoo.plaf.bernstein.BernsteinLookAndFeel");

@@ -6,7 +6,8 @@
 package br.edu.ifg.poo;
 
 import br.edu.ifg.siseducar.frame.LoginFrm;
-import br.edu.ifg.siseducar.frame.SplashScreen;
+import br.edu.ifg.siseducar.util.Conexao;
+import java.sql.Connection;
 
 
 /**
@@ -15,18 +16,12 @@ import br.edu.ifg.siseducar.frame.SplashScreen;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//            }
-//        }).start();
+    private static Connection conexao;
 
-            //new SplashScreen().setVisible(true);
-            new LoginFrm().setVisible(true);
+    public static void main(String[] args) {
+        
+        conexao = new Conexao().getConexao();
+        new LoginFrm().setVisible(true);
         
 
     }

@@ -1,18 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.ifg.siseducar.frame;
 
+import br.edu.ifg.siseducar.util.Banco;
+import javax.swing.JOptionPane;
+
 /**
- *
  * @author gilberto
  */
 public class LoginFrm extends javax.swing.JFrame {
 
     public LoginFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -23,10 +21,11 @@ public class LoginFrm extends javax.swing.JFrame {
         jLabelSenhaLogin = new javax.swing.JLabel();
         jTextFieldLogin = new javax.swing.JTextField();
         jButtonEntrarLogin = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordFieldSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+        setType(java.awt.Window.Type.POPUP);
 
         jLabelLogin.setText("Login:");
 
@@ -53,7 +52,7 @@ public class LoginFrm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelSenhaLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField1))
+                        .addComponent(jPasswordFieldSenha))
                     .addComponent(jButtonEntrarLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -67,7 +66,7 @@ public class LoginFrm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSenhaLogin)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonEntrarLogin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -77,6 +76,31 @@ public class LoginFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarLoginActionPerformed
+            String login = jTextFieldLogin.getText();
+            String senha = jPasswordFieldSenha.getText();
+        
+        if ("".equals(login.trim())) {
+            JOptionPane.showMessageDialog(rootPane, "Por favor informe um Login!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+            jTextFieldLogin.requestFocus();
+            return;
+        }
+        
+        if ("".equals(senha.trim())) {
+            JOptionPane.showMessageDialog(rootPane, "Por favor informe uma Senha!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+            jPasswordFieldSenha.requestFocus();
+            return;
+        }
+        
+//        if (Banco.verificaLogin(login.toLowerCase(), senha.toLowerCase())){
+//            limparCampos();
+//            hide();
+//            JOptionPane.showMessageDialog(rootPane, "Login realizado com sucesso!");
+//        } else {
+//            txtSenha.setText("");
+//            txtUser.requestFocus();
+//            JOptionPane.showMessageDialog(rootPane, "Usuario e/ou senha incorretos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+//        }
+        
         new SplashScreen().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonEntrarLoginActionPerformed
@@ -85,7 +109,7 @@ public class LoginFrm extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEntrarLogin;
     private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelSenhaLogin;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JTextField jTextFieldLogin;
     // End of variables declaration//GEN-END:variables
 }
