@@ -16,7 +16,7 @@ import java.sql.Connection;
  */
 public class Main {
 
-    private static Connection conexao;
+    public static Connection conexao;
 
     public static void main(String[] args) {
         

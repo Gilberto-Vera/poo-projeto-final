@@ -1,5 +1,6 @@
 package br.edu.ifg.siseducar.util;
 
+import static br.edu.ifg.poo.Main.conexao;
 import br.edu.ifg.siseducar.vo.Aluno;
 import br.edu.ifg.siseducar.vo.Professor;
 import java.sql.ResultSet;
@@ -16,7 +17,7 @@ public class Banco {
         public static boolean verificaLogin(String user, String senha){
         try {
             String SQL = "SELECT * from usuario WHERE login = '" + user +"' AND senha = '" + senha + "';";
-            Statement stmt = Conexao.createStatement();
+            Statement stmt = conexao.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
             if(rs.next()){
                 //id_logado = rs.getInt("id");

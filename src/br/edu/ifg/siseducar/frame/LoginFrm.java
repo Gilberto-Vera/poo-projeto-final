@@ -91,19 +91,24 @@ public class LoginFrm extends javax.swing.JFrame {
             return;
         }
         
-//        if (Banco.verificaLogin(login.toLowerCase(), senha.toLowerCase())){
-//            limparCampos();
-//            hide();
-//            JOptionPane.showMessageDialog(rootPane, "Login realizado com sucesso!");
-//        } else {
-//            txtSenha.setText("");
-//            txtUser.requestFocus();
-//            JOptionPane.showMessageDialog(rootPane, "Usuario e/ou senha incorretos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-//        }
+        if (Banco.verificaLogin(login.toLowerCase(), senha.toLowerCase())){
+            limparCampos();
+            hide();
+            JOptionPane.showMessageDialog(rootPane, "Login realizado com sucesso!");
+            new SplashScreen().setVisible(true);
+            dispose();
+        } else {
+            limparCampos();
+            jTextFieldLogin.requestFocus();
+            JOptionPane.showMessageDialog(rootPane, "Usuario e/ou senha incorretos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        }
         
-        new SplashScreen().setVisible(true);
-        dispose();
     }//GEN-LAST:event_jButtonEntrarLoginActionPerformed
+
+        private void limparCampos(){
+        jTextFieldLogin.setText("");
+        jPasswordFieldSenha.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEntrarLogin;
