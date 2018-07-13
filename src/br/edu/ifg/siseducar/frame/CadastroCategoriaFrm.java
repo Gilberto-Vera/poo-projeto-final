@@ -20,6 +20,7 @@ public class CadastroCategoriaFrm extends javax.swing.JInternalFrame {
      */
     public CadastroCategoriaFrm() {
         initComponents();
+        cboCategoriaSuperior.addItem("Nenhuma");
     }
 
     /**
@@ -53,13 +54,6 @@ public class CadastroCategoriaFrm extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setText("Categoria Superior");
-
-        cboCategoriaSuperior.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboCategoriaSuperior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboCategoriaSuperiorActionPerformed(evt);
-            }
-        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,32 +99,37 @@ public class CadastroCategoriaFrm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        
         String nome = txtNome.getText();
+        Integer id_cmb = cboCategoriaSuperior.getSelectedIndex() - 1;
+                
         if ("".equals(nome.trim())) {
             JOptionPane.showMessageDialog(rootPane, "Por favor informe o nome!", "Aviso!", JOptionPane.WARNING_MESSAGE);
             txtNome.setBorder(new LineBorder(Color.red));
             txtNome.requestFocus();
             return;
         }
-        if (cboCategoriaSuperior.getSelectedItem().equals("< Escolha uma opção >")) {
-            JOptionPane.showMessageDialog(rootPane, "Opção de Semestre Invalida!\nEscolha uma opção valida!");
-                cboCategoriaSuperior.setBorder(new LineBorder(Color.red));
-        }
-        else{
-            String Mensagem = "\nNome: " +nome+ "\nCategoria Superior: " +cboCategoriaSuperior.getSelectedItem()+
-                "\n--------------------------------------------------" + "\nCadastrada com Sucesso!";
-            JOptionPane.showMessageDialog(rootPane, Mensagem);     
-            
-            txtNome.setBorder(new LineBorder(Color.gray));        
-            cboCategoriaSuperior.setBorder(new LineBorder(Color.gray));
-            
-            limparCampos();
+        String Mensagem = "\nNome: " +nome+ "\nCategoria Superior: " +cboCategoriaSuperior.getSelectedItem()+
+            "\n--------------------------------------------------" + "\nCadastrada com Sucesso!";
+        JOptionPane.showMessageDialog(rootPane, Mensagem);     
+
+        txtNome.setBorder(new LineBorder(Color.gray));        
+        cboCategoriaSuperior.setBorder(new LineBorder(Color.gray));
+
+        limparCampos();
+
+        String sql; 
+        if(id_cmb == - 1){
+            sql = "INSERT INTO categoria VALUES (DEFAULT, NULL" + "'" + nome + "', NULL);";
+        } else {
+            String[] idDiscs = cboCategoriaSuperior.getSelectedItem().toString().split(" ");
+            Integer id_cat = Integer.parseInt(idDiscs[0]);
+            sql = "INSERT INTO categoria VALUES ("
+                + "DEFAULT, "
+                + "'" + nome.toLowerCase() + "', "
+                + "" + id_cat + ");";
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void cboCategoriaSuperiorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoriaSuperiorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboCategoriaSuperiorActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         txtNome.transferFocus();

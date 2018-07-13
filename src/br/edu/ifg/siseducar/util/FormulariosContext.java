@@ -7,6 +7,7 @@ package br.edu.ifg.siseducar.util;
 
 import br.edu.ifg.siseducar.frame.CadastroCategoriaFrm;
 import br.edu.ifg.siseducar.frame.CadastroFluxoDeCaixaFrm;
+import br.edu.ifg.siseducar.frame.CadastroUsuario;
 import br.edu.ifg.siseducar.frame.Principal;
 import java.beans.PropertyVetoException;
 
@@ -19,6 +20,7 @@ public class FormulariosContext {
     
     private static CadastroCategoriaFrm cadastroCategoriaFrm;
     private static CadastroFluxoDeCaixaFrm cadastroFluxoCaixaFrm;
+    private static CadastroUsuario cadastroUsuarioFrm;
     private static Principal principalFrm;
     
     public static void showCadastroCategoria() {
@@ -46,6 +48,19 @@ public class FormulariosContext {
             
         }
     }
+        public static void showCadastroUsuario() {
+        try {
+            if(cadastroUsuarioFrm == null){
+                cadastroUsuarioFrm = new CadastroUsuario();
+                principalFrm.addInternal(cadastroUsuarioFrm);
+            }
+            cadastroUsuarioFrm.setVisible(true);
+            cadastroUsuarioFrm.setIcon(false);
+        } catch (PropertyVetoException ex) {
+            
+        }
+    }
+
 
     public static void showPrincipalFrm() {
         if(principalFrm == null){
