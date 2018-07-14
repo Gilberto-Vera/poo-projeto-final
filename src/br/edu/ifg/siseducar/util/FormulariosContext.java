@@ -6,20 +6,19 @@
 package br.edu.ifg.siseducar.util;
 
 import br.edu.ifg.siseducar.frame.CadastroCategoriaFrm;
-import br.edu.ifg.siseducar.frame.CadastroFluxoDeCaixaFrm;
+import br.edu.ifg.siseducar.frame.CadastroFluxoCaixaFrm;
 import br.edu.ifg.siseducar.frame.CadastroUsuario;
 import br.edu.ifg.siseducar.frame.Principal;
 import java.beans.PropertyVetoException;
 
 
 /**
- *
  * @author gustavo
  */
 public class FormulariosContext {
     
     private static CadastroCategoriaFrm cadastroCategoriaFrm;
-    private static CadastroFluxoDeCaixaFrm cadastroFluxoCaixaFrm;
+    private static CadastroFluxoCaixaFrm cadastroFluxoCaixaFrm;
     private static CadastroUsuario cadastroUsuarioFrm;
     private static Principal principalFrm;
     
@@ -36,10 +35,10 @@ public class FormulariosContext {
         }
     }
     
-    public static void showCadastroFluxoCaixa() {
+        public static void showCadastroFluxoCaixaFrm() {
         try {
             if(cadastroFluxoCaixaFrm == null){
-                cadastroFluxoCaixaFrm = new CadastroFluxoDeCaixaFrm();
+                cadastroFluxoCaixaFrm = new CadastroFluxoCaixaFrm();
                 principalFrm.addInternal(cadastroFluxoCaixaFrm);
             }
             cadastroFluxoCaixaFrm.setVisible(true);
@@ -48,6 +47,7 @@ public class FormulariosContext {
             
         }
     }
+   
         public static void showCadastroUsuario() {
         try {
             if(cadastroUsuarioFrm == null){

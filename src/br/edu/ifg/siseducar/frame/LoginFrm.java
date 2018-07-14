@@ -32,12 +32,16 @@ public class LoginFrm extends javax.swing.JFrame {
 
         jLabelSenhaLogin.setText("Senha:");
 
+        jTextFieldLogin.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+
         jButtonEntrarLogin.setText("Entrar");
         jButtonEntrarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEntrarLoginActionPerformed(evt);
             }
         });
+
+        jPasswordFieldSenha.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
         jButtonCancelarLogin.setText("Cancelar");
         jButtonCancelarLogin.addActionListener(new java.awt.event.ActionListener() {

@@ -48,9 +48,8 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         jButtonCancelar = new javax.swing.JButton();
 
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
+        setTitle("Cadastro de Usuário");
+        setToolTipText("");
 
         jLabelNomeCadUsuario.setText("Nome:");
 

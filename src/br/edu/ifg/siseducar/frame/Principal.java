@@ -140,7 +140,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnSair2ActionPerformed
 
     private void cadastroCategoriaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCategoriaItemActionPerformed
-        FormulariosContext.showCadastroFluxoCaixa();
+        FormulariosContext.showCadastroFluxoCaixaFrm();
     }//GEN-LAST:event_cadastroCategoriaItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
