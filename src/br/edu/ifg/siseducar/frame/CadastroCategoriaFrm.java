@@ -5,7 +5,12 @@
  */
 package br.edu.ifg.siseducar.frame;
 
+import br.edu.ifg.siseducar.util.Banco;
+import br.edu.ifg.siseducar.vo.Categoria;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
@@ -20,7 +25,7 @@ public class CadastroCategoriaFrm extends javax.swing.JInternalFrame {
      */
     public CadastroCategoriaFrm() {
         initComponents();
-        cboCategoriaSuperior.addItem("Nenhuma");
+        carregaLista();
     }
 
     /**
@@ -109,28 +114,44 @@ public class CadastroCategoriaFrm extends javax.swing.JInternalFrame {
             txtNome.requestFocus();
             return;
         }
-        String Mensagem = "\nNome: " +nome+ "\nCategoria Superior: " +cboCategoriaSuperior.getSelectedItem()+
-            "\n--------------------------------------------------" + "\nCadastrada com Sucesso!";
-        JOptionPane.showMessageDialog(rootPane, Mensagem);     
+        
+        String sql; 
+        if(id_cmb == - 1){
+            sql = "INSERT INTO categoria VALUES (DEFAULT, " + "'" + nome + "', NULL);";
+            JOptionPane.showMessageDialog(rootPane,"Categoria Superior " + nome + " adicionado com sucesso!");
+            carregaLista();
+        } else {
+            String[] idDiscs = cboCategoriaSuperior.getSelectedItem().toString().split("-");
+            Integer id_cat = Integer.parseInt(idDiscs[0]);
+            sql = "INSERT INTO categoria VALUES (DEFAULT, '" + nome.toLowerCase() 
+                + "', " + id_cat + ");";
+            JOptionPane.showMessageDialog(rootPane, "Categoria " + nome + " adicionado com sucesso!");
+            carregaLista();
+        }
+        
+        System.out.println(sql); try {
+            Banco.Query(sql);
+            carregaLista();
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroCategoriaFrm.class.getName()).log(Level.SEVERE, null, ex);
+        }       
 
         txtNome.setBorder(new LineBorder(Color.gray));        
         cboCategoriaSuperior.setBorder(new LineBorder(Color.gray));
 
         limparCampos();
-
-        String sql; 
-        if(id_cmb == - 1){
-            sql = "INSERT INTO categoria VALUES (DEFAULT, NULL" + "'" + nome + "', NULL);";
-        } else {
-            String[] idDiscs = cboCategoriaSuperior.getSelectedItem().toString().split(" ");
-            Integer id_cat = Integer.parseInt(idDiscs[0]);
-            sql = "INSERT INTO categoria VALUES ("
-                + "DEFAULT, "
-                + "'" + nome.toLowerCase() + "', "
-                + "" + id_cat + ");";
-        }
     }//GEN-LAST:event_btnSalvarActionPerformed
-
+    
+    private void carregaLista() {                                            
+        Banco.recarregaCategoria();
+        cboCategoriaSuperior.setModel(new javax.swing.DefaultComboBoxModel());
+        cboCategoriaSuperior.addItem("Nenhuma");
+        for(Categoria c : Banco.getCategorias()){
+            if(c.getId_catSup()== 0)
+                cboCategoriaSuperior.addItem(c.getId() + "-" + c.getDescricao().toUpperCase());
+        }
+    }
+    
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         txtNome.transferFocus();
     }//GEN-LAST:event_txtNomeActionPerformed

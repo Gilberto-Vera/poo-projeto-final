@@ -12,8 +12,7 @@ CREATE TABLE usuario(
 
 CREATE TABLE categoria(
     id_cat SERIAL PRIMARY KEY,
-    catSup VARCHAR(20),
-    cat VARCHAR(40),
-    id_catSupFK INTEGER,
-    FOREIGN KEY (id_catSupFK) REFERENCES categoria(id_cat)
+    descricao VARCHAR(30),
+    id_catSup INTEGER,
+    FOREIGN KEY (id_catSup) REFERENCES categoria(id_cat)
 );

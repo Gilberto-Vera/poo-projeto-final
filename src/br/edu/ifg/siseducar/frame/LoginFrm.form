@@ -40,7 +40,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPasswordFieldSenha" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jButtonEntrarLogin" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jButtonEntrarLogin" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonCancelarLogin" min="-2" pref="144" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -60,7 +64,10 @@
                   <Component id="jPasswordFieldSenha" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButtonEntrarLogin" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButtonEntrarLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonCancelarLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -88,6 +95,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordFieldSenha">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonCancelarLogin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarLoginActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

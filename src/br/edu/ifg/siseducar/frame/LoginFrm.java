@@ -22,6 +22,7 @@ public class LoginFrm extends javax.swing.JFrame {
         jTextFieldLogin = new javax.swing.JTextField();
         jButtonEntrarLogin = new javax.swing.JButton();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
+        jButtonCancelarLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -35,6 +36,13 @@ public class LoginFrm extends javax.swing.JFrame {
         jButtonEntrarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEntrarLoginActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelarLogin.setText("Cancelar");
+        jButtonCancelarLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarLoginActionPerformed(evt);
             }
         });
 
@@ -53,7 +61,10 @@ public class LoginFrm extends javax.swing.JFrame {
                         .addComponent(jLabelSenhaLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPasswordFieldSenha))
-                    .addComponent(jButtonEntrarLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonEntrarLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonCancelarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -68,7 +79,9 @@ public class LoginFrm extends javax.swing.JFrame {
                     .addComponent(jLabelSenhaLogin)
                     .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonEntrarLogin)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEntrarLogin)
+                    .addComponent(jButtonCancelarLogin))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -93,8 +106,6 @@ public class LoginFrm extends javax.swing.JFrame {
         
         if (Banco.verificaLogin(login.toLowerCase(), senha.toLowerCase())){
             limparCampos();
-            hide();
-            JOptionPane.showMessageDialog(rootPane, "Login realizado com sucesso!");
             new SplashScreen().setVisible(true);
             dispose();
         } else {
@@ -105,12 +116,17 @@ public class LoginFrm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonEntrarLoginActionPerformed
 
+    private void jButtonCancelarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarLoginActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButtonCancelarLoginActionPerformed
+
         private void limparCampos(){
         jTextFieldLogin.setText("");
         jPasswordFieldSenha.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCancelarLogin;
     private javax.swing.JButton jButtonEntrarLogin;
     private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelSenhaLogin;
