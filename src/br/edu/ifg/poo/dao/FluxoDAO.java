@@ -43,9 +43,9 @@ public class FluxoDAO {
                 Fluxo fluxo = new Fluxo();
                 fluxo.setId(rs.getInt("id"));
                 fluxo.setDesc(rs.getString("descri"));
-                fluxo.setData(rs.getDate("datafc"));
                 fluxo.setId_cat(rs.getInt("id_cat"));
                 fluxo.setId_usu(rs.getInt("id_usu"));
+                fluxo.setData(rs.getDate("data_fc"));
                 fluxo.setValor(rs.getDouble("valor"));
                 fluxos.add(fluxo);
             }
@@ -107,10 +107,10 @@ public class FluxoDAO {
             while (rs.next()) {                
                 Fluxo fluxo = new Fluxo();
                 fluxo.setId(rs.getInt("id"));
-                fluxo.setDesc(rs.getString("descr"));
-                fluxo.setData(rs.getDate("data"));
-                fluxo.setId_cat(rs.getInt("id_cat"));
+                fluxo.setDesc(rs.getString("descri"));
                 fluxo.setId_usu(rs.getInt("id_usu"));
+                fluxo.setId_cat(rs.getInt("id_cat"));
+                fluxo.setData(rs.getDate("data_fc"));
                 fluxo.setValor(rs.getDouble("valor"));
                 fluxos.add(fluxo);
             }
