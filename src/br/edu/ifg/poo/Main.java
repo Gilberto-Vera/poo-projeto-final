@@ -5,8 +5,8 @@
  */
 package br.edu.ifg.poo;
 
-import br.edu.ifg.siseducar.frame.LoginFrm;
-import br.edu.ifg.siseducar.util.Conexao;
+import br.edu.ifg.poo.frame.LoginFrm;
+import br.edu.ifg.poo.util.Conexao;
 import java.sql.Connection;
 
 
